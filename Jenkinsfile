@@ -2,34 +2,22 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                echo 'Checking out source code...'
-            }
-        }
         stage('Build') {
             steps {
                 echo 'Building project...'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying application...'
             }
         }
     }
 
     post {
         success {
-            echo 'Pipeline executed successfully!'
+            echo 'Build was SUCCESSFUL ✅'
         }
         failure {
-            echo 'Pipeline failed!'
+            echo 'Build FAILED ❌'
+        }
+        always {
+            echo 'Post-build actions completed.'
         }
     }
 }
